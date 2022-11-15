@@ -10,4 +10,9 @@ export const productModel = async (name: string, amount: string) => {
   return insertId;
 };
 
-export const getProductModel = async () => {};
+export const getProductModel = async () => {
+  const [result] = await connection.execute<ResultSetHeader>(
+    'SELECT * FROM Trybesmith.Products',
+  );
+  return result;
+};
